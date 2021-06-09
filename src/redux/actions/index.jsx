@@ -1,5 +1,5 @@
 import { requestCountry } from './country';
-import { requestState } from './state';
+import { requestStates } from './states';
 import { requestCity } from './city';
 import {
   fetchCountryAPI,
@@ -9,7 +9,7 @@ import {
 
 export {
   requestCountry,
-  requestState,
+  requestStates,
   requestCity,
 };
 
@@ -24,10 +24,10 @@ export const requestCountryAPI = () => async (dispatch) => {
 };
 
 export const requestStateAPI = () => async (dispatch) => {
-  dispatch(requestState());
+  dispatch(requestStates());
   try {
     const response = await fetchStateByCountryAPI();
-    return dispatch(requestState(response.name));
+    return dispatch(requestStates(response.name));
   } catch (error) {
     return console.log(error);
   }
