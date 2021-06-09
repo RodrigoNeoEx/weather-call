@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { requestCountry } from '../services/requestAPI';
+import { requestCountryAPI } from '../services/requestAPI';
 
 class Header extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Header extends Component {
 
   async handleCountry() {
     const { name } = this.state;
-    requestCountry(name)
+    requestCountryAPI(name)
   }
 
   render() {
