@@ -10,13 +10,13 @@ const requestOptions = {
 export async function fetchCountryAPI(input) {
   const response = await fetch(`https://api.countrystatecity.in/v1/countries/${input}`, requestOptions);
   const country = await response.json();
-  return console.log(country);
+  return country;
 }
 
 export async function fetchStateByCountryAPI(input) {
   const response = await fetch(`https://api.countrystatecity.in/v1/countries/${input}/states`, requestOptions);
-  const state = await response.json();
-  return console.log(state);
+  const stateName = await response.json();
+  return stateName;
 }
 
 export async function fetchCityAPI(input1, input2) {

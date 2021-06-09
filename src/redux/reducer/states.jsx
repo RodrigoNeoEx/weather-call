@@ -9,8 +9,8 @@ const states = ( state = INITIAL_STATE, action) => {
   switch (action.type) {
   case REQUEST_STATES:
     return ({ ...state,
-      loading:false,
-      states: action.country});
+      loading: false,
+      states: action.states });
     default:
       return state
   }

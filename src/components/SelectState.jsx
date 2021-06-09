@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { requestStateByCountry } from '../services/requestAPI';
+import { connect } from 'react-redux';
+import { requestStateAPI } from '../redux/actions';
 
 class SelectState extends Component {
   constructor(props) {
@@ -7,18 +8,33 @@ class SelectState extends Component {
     this.createOptions = this.createOptions.bind(this);
   }
 
-  createOptions(country) {
-    requestStateByCountry(country)
-
+  async createOptions() {
+    const { country, getStates, states } = this.props
+    await getStates(country.iso2)
+    console.log(states)
   }
 
   render() {
     return(
-      <select>
-
-      </select>
+      <div>
+        <button
+        type="button"
+        onClick={ this.createOptions }
+        >
+          teste
+        </button>
+      </div>
     )
   }
 }
 
-export default SelectState;
+const mapStateToProps = (state) => ({
+  country: state.country.country,
+  states: state.states.states,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getStates: (input) => dispatch(requestStateAPI(input)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectState);

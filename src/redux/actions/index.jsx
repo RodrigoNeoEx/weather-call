@@ -13,21 +13,21 @@ export {
   requestCity,
 };
 
-export const requestCountryAPI = () => async (dispatch) => {
+export const requestCountryAPI = (input) => async (dispatch) => {
   dispatch(requestCountry());
   try {
-    const response = await fetchCountryAPI();
-    return dispatch(requestCountry(response.name));
+    const response = await fetchCountryAPI(input);
+    return dispatch(requestCountry(response));
   } catch (error) {
     return console.log(error);
   }
 };
 
-export const requestStateAPI = () => async (dispatch) => {
+export const requestStateAPI = (input) => async (dispatch) => {
   dispatch(requestStates());
   try {
-    const response = await fetchStateByCountryAPI();
-    return dispatch(requestStates(response.name));
+    const response = await fetchStateByCountryAPI(input);
+    return dispatch(requestStates(response));
   } catch (error) {
     return console.log(error);
   }

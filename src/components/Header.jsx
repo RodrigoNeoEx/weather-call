@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { fetchCountryAPI } from '../services/requestAPI';
+import SelectState from './SelectState';
+import { connect } from 'react-redux';
+import { requestCountryAPI } from '../redux/actions';
+
 
 class Header extends Component {
   constructor(props) {
@@ -17,8 +20,9 @@ class Header extends Component {
   }
 
   async handleCountry() {
+    const { getCountry } = this.props;
     const { name } = this.state;
-    fetchCountryAPI(name)
+    getCountry(name)
   }
 
   render() {
@@ -40,11 +44,19 @@ class Header extends Component {
            >
             Show me Weather
           </button>
-          { this.handleCountry }
         </form>
+        <SelectState />
       </header>
     )
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  country: state.country.country,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getCountry: (input) => dispatch(requestCountryAPI(input)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
