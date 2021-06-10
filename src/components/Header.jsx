@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SelectState from './SelectState';
 import { connect } from 'react-redux';
-import { requestCountryAPI } from '../redux/actions';
-
+import { requestCountryAPI, requestStateAPI } from '../redux/actions';
+import SelectState from './SelectState';
+// import SelectCity from './SelectCity';
 
 class Header extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class Header extends Component {
     };
     this.handleCountry = this.handleCountry.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.createStatesOptions = this.createStatesOptions.bind(this);
   }
 
   handleChange(event) {
@@ -22,10 +23,16 @@ class Header extends Component {
   async handleCountry() {
     const { getCountry } = this.props;
     const { name } = this.state;
-    getCountry(name)
+    await getCountry(name)
+    this.createStatesOptions()
   }
 
-  render() {
+  async createStatesOptions() {
+    const { country, getStates } = this.props
+      await getStates(country.iso2)
+    }
+
+    render() {
     const { name } = this.state;
     return(
       <header>
@@ -34,18 +41,21 @@ class Header extends Component {
           <input
             type="text"
             name="name"
+            maxLength="3"
             value={ name }
             onChange={ this.handleChange }
+            className="inputCountry"
           />
           <button
            type="button"
-           className="submitWeather"
+           className="submitCountry"
            onClick={ this.handleCountry }
            >
-            Show me Weather
+            Set you country acronym
           </button>
+          <SelectState />
+          {/* <SelectCity /> */}
         </form>
-        <SelectState />
       </header>
     )
   }
@@ -53,10 +63,13 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   country: state.country.country,
+  states: state.states.states,
+  city: state.city.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCountry: (input) => dispatch(requestCountryAPI(input)),
+  getStates: (input) => dispatch(requestStateAPI(input)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
