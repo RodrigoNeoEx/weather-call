@@ -17,10 +17,11 @@ class SelectCity extends Component {
   }
 
   render() {
-    const { selectedState } = this.props;
+    const { city } = this.props;
+    const { selectedCity } = this.state;
     return(
-      <select value={this.state.selectedCity} onChange={this.handleChange}>
-        { selectedState ? selectedState.map((cityName, index) => {
+      <select value={ selectedCity } onChange={this.handleChange}>
+        { city ? city.map((cityName, index) => {
           return (
           <option
             value={cityName.name}
@@ -36,7 +37,7 @@ class SelectCity extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  selectedState: state.selectedState.selectedState,
+  city: state.city.city,
 });
 
 export default connect(mapStateToProps)(SelectCity);
