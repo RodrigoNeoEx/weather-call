@@ -3,7 +3,7 @@ import { REQUEST_STATES } from '../actions/states';
 const INITIAL_STATE = {
   loading: true,
   states: [],
-}
+};
 
 const states = ( state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -12,7 +12,7 @@ const states = ( state = INITIAL_STATE, action) => {
       loading: false,
       states: action.states });
     default:
-      return state
+      return state;
   }
 };
 

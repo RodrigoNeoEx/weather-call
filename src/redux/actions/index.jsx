@@ -1,5 +1,5 @@
 import { requestCountry } from './country';
-import { requestStates } from './states';
+import { requestStates, setSelectedState } from './states';
 import { requestCity } from './city';
 import {
   fetchCountryAPI,
@@ -11,6 +11,7 @@ export {
   requestCountry,
   requestStates,
   requestCity,
+  setSelectedState,
 };
 
 export const requestCountryAPI = (input) => async (dispatch) => {
@@ -33,11 +34,12 @@ export const requestStateAPI = (input) => async (dispatch) => {
   }
 };
 
-export const requestCityAPI = () => async (dispatch) => {
+export const requestCityAPI = (input1, input2) => async (dispatch) => {
   dispatch(requestCity());
+  console.log(input1, input2)
   try {
-    const response = await fetchCityAPI();
-    return dispatch(requestCity(response.name));
+    const response = await fetchCityAPI(input1, input2);
+    return dispatch(requestCity(response));
   } catch (error) {
     return console.log(error);
   }

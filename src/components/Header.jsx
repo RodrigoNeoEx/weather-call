@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestCountryAPI, requestStateAPI } from '../redux/actions';
 import SelectState from './SelectState';
-// import SelectCity from './SelectCity';
+import SelectCity from './SelectCity';
 
 class Header extends Component {
   constructor(props) {
@@ -23,14 +23,14 @@ class Header extends Component {
   async handleCountry() {
     const { getCountry } = this.props;
     const { name } = this.state;
-    await getCountry(name)
-    this.createStatesOptions()
+    await getCountry(name);
+    this.createStatesOptions();
   }
 
   async createStatesOptions() {
-    const { country, getStates } = this.props
-      await getStates(country.iso2)
-    }
+    const { country, getStates } = this.props;
+    await getStates(country.iso2);
+  }
 
     render() {
     const { name } = this.state;
@@ -51,10 +51,10 @@ class Header extends Component {
            className="submitCountry"
            onClick={ this.handleCountry }
            >
-            Set you country acronym
+            Set your country acronym
           </button>
           <SelectState />
-          {/* <SelectCity /> */}
+          <SelectCity />
         </form>
       </header>
     )
@@ -64,7 +64,6 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   country: state.country.country,
   states: state.states.states,
-  city: state.city.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
