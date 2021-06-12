@@ -19,7 +19,7 @@ class SelectState extends Component {
   }
 
   async handleChange(event) {
-    this.setState({selectedState: event.target.value});
+    this.setState({selectedState: [event.target.value]});
   }
 
   render() {

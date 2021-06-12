@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestCountryAPI, requestStateAPI } from '../redux/actions';
 import SelectState from './SelectState';
-// import SelectCity from './SelectCity';
+import SelectCity from './SelectCity';
 
 class Header extends Component {
   constructor(props) {
@@ -41,7 +41,6 @@ class Header extends Component {
     render() {
     const { name, states } = this.state;
     const { selectedState, country } = this.props
-    console.log(selectedState, country)
     return(
       <header>
         <h1>Set your Country, state and city to show your weather in real time!</h1>
@@ -62,7 +61,7 @@ class Header extends Component {
             Set your country acronym
           </button>
           { states && <SelectState /> }
-          {/* { city.length === 0 ? '' : <SelectCity /> } */}
+          { selectedState.length > 0 && country !== undefined ? <SelectCity /> : console.log("não foi")}
         </form>
       </header>
     )
