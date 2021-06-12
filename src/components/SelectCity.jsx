@@ -11,10 +11,9 @@ class SelectCity extends Component {
   }
 
   handleChange(event) {
-    const { selectedCity } = this.props
     this.setState({selectedCity: event.target.value});
-    console.log(selectedCity)
   }
+
 
   render() {
     const { city } = this.props;

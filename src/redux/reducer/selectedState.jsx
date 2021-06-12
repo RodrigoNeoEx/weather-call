@@ -1,7 +1,7 @@
 import { SET_SELECTED_STATES } from '../actions/states';
 
 const INITIAL_STATE = {
-  stateSelected: '',
+  stateSelected: [],
 };
 
 const stateSelected = ( state = INITIAL_STATE, action) => {

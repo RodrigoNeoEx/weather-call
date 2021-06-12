@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestCountryAPI, requestStateAPI } from '../redux/actions';
 import SelectState from './SelectState';
-import SelectCity from './SelectCity';
+// import SelectCity from './SelectCity';
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      name: 'BR',
+      states: [],
     };
     this.handleCountry = this.handleCountry.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.createStatesOptions = this.createStatesOptions.bind(this);
+    this.requestStates = this.requestStates.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleCountry()
   }
 
   handleChange(event) {
@@ -24,16 +29,19 @@ class Header extends Component {
     const { getCountry } = this.props;
     const { name } = this.state;
     await getCountry(name);
-    this.createStatesOptions();
+    await this.requestStates();
   }
 
-  async createStatesOptions() {
-    const { country, getStates } = this.props;
+  async requestStates() {
+    const { country, getStates, states } = this.props;
     await getStates(country.iso2);
+    this.setState({states: states});
   }
 
     render() {
-    const { name } = this.state;
+    const { name, states } = this.state;
+    const { selectedState, country } = this.props
+    console.log(selectedState, country)
     return(
       <header>
         <h1>Set your Country, state and city to show your weather in real time!</h1>
@@ -53,8 +61,8 @@ class Header extends Component {
            >
             Set your country acronym
           </button>
-          <SelectState />
-          <SelectCity />
+          { states && <SelectState /> }
+          {/* { city.length === 0 ? '' : <SelectCity /> } */}
         </form>
       </header>
     )
@@ -64,6 +72,8 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   country: state.country.country,
   states: state.states.states,
+  city: state.city.city,
+  selectedState: state.selectedState.stateSelected,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -34,13 +34,13 @@ export const requestStateAPI = (input) => async (dispatch) => {
   }
 };
 
-export const requestCityAPI = (input1, input2) => async (dispatch) => {
-  dispatch(requestCity());
-  console.log(input1, input2)
+export const requestCityAPI = (countryName, stateName) => async (dispatch) => {
+  if(stateName) {
+    dispatch(requestCity());
   try {
-    const response = await fetchCityAPI(input1, input2);
+    const response = await fetchCityAPI(countryName, stateName);
     return dispatch(requestCity(response));
   } catch (error) {
     return console.log(error);
-  }
+  }}
 };
