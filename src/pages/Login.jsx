@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestCountryAPI, requestStateAPI } from '../redux/actions';
-import SelectState from './SelectState';
-import SelectCity from './SelectCity';
+import SelectState from '../components/SelectState';
+import SelectCity from '../components/SelectCity';
 
-class Header extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch) => ({
   getStates: (input) => dispatch(requestStateAPI(input)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
