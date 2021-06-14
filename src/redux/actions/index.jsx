@@ -1,6 +1,6 @@
 import { requestCountry } from './country';
 import { requestStates, setSelectedState } from './states';
-import { requestCity } from './city';
+import { requestCity, setSelectedCity } from './city';
 import {
   fetchCountryAPI,
   fetchStateByCountryAPI,
@@ -12,6 +12,7 @@ export {
   requestStates,
   requestCity,
   setSelectedState,
+  setSelectedCity,
 };
 
 export const requestCountryAPI = (input) => async (dispatch) => {

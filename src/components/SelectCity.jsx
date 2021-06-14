@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { requestCityAPI } from '../redux/actions';
+import { requestCityAPI, setSelectedCity } from '../redux/actions';
 
 class SelectCity extends Component {
   constructor(props) {
@@ -15,6 +15,12 @@ class SelectCity extends Component {
   componentDidMount() {
     const {country, selectedState, getCitys} = this.props;
     getCitys(country.iso2, selectedState)
+  }
+
+  componentDidUpdate() {
+    const { selectedCity } = this.state;
+    const { getSelectedCity } = this.props
+    getSelectedCity(selectedCity);
   }
 
   handleChange(event) {
@@ -60,12 +66,14 @@ class SelectCity extends Component {
 
 const mapStateToProps = (state) => ({
   city: state.city.city,
+  selectedCity: state.selectedCity.citySelected,
   selectedState: state.selectedState.stateSelected,
   country: state.country.country,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCitys: (countryIso, stateIso) => dispatch(requestCityAPI(countryIso, stateIso)),
+  getSelectedCity: (input) => dispatch(setSelectedCity(input)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectCity);
