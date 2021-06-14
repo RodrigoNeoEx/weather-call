@@ -61,7 +61,10 @@ class Header extends Component {
             Set your country acronym
           </button>
           { states && <SelectState /> }
-          { selectedState.length > 0 && country !== undefined ? <SelectCity /> : console.log("não foi")}
+          { selectedState.length > 0 && country !== undefined
+            ? <SelectCity />
+            : console.log("não foi")
+          }
         </form>
       </header>
     )

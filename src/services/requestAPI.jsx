@@ -20,6 +20,7 @@ export async function fetchStateByCountryAPI(stateName) {
 }
 
 export async function fetchCityAPI(countryName, stateName) {
+  console.log(countryName, stateName)
   const response = await fetch(
     `https://api.countrystatecity.in/v1/countries/${countryName}/states/${stateName}/cities`,
      requestOptions);

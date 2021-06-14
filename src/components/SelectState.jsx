@@ -6,7 +6,7 @@ class SelectState extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedState: [],
+      selectedState: '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,7 +19,7 @@ class SelectState extends Component {
   }
 
   async handleChange(event) {
-    this.setState({selectedState: [event.target.value]});
+    this.setState({selectedState: event.target.value});
   }
 
   render() {
