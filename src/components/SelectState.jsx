@@ -15,7 +15,6 @@ class SelectState extends Component {
     const { selectedState } = this.state;
     const { getSelectedState } = this.props
     getSelectedState(selectedState);
-
   }
 
   async handleChange(event) {
