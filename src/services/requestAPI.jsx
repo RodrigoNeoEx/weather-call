@@ -28,4 +28,5 @@ export async function fetchCityAPI(countryName, stateName) {
   return city;
 }
 
+// weather key => 87fae4dd5dd34ace8d7145623211506
 

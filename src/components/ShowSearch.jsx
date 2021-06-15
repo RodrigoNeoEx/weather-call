@@ -14,7 +14,13 @@ class ShowSearch extends Component {
         {`State: ${selectedState}`} <br/>
         {`City: ${selectedCity}` }
       </span>
-      <button className="submitSearch" type="button">See the weather at this location</button>
+      <button
+        className="submitSearch"
+        type="button"
+        // onClick={}
+      >
+        See the weather at this location
+      </button>
     </section>)
   }
 }
