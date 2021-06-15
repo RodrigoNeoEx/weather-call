@@ -47,8 +47,7 @@ class SelectCity extends Component {
     return(
       <>
       <select value={ selectedCity } onChange={this.handleChange}>
-        { city ? (
-          city.map((cityName, index) => {
+        { city ? city.map((cityName, index) => {
           return (
           <option
             value={cityName.name}
@@ -56,7 +55,7 @@ class SelectCity extends Component {
           >
             { cityName.name }
           </option>);
-        }))
+        })
           : <option>loading...</option> }
       </select>
       </>

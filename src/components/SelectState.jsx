@@ -26,14 +26,14 @@ class SelectState extends Component {
     const { selectedState } = this.state;
     return(
       <select value={ selectedState } onChange={this.handleChange}>
-        { states && states.map((stateName) => (
+        { states ? states.map((stateName) => (
           <option
             value={stateName.iso2}
             key={ stateName.name }
           >
             { `${stateName.name} - ${stateName.iso2}` }
-          </option>
-          ))
+          </option>))
+          : <option>loading...</option>
         }
       </select>
     )

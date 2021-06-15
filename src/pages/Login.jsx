@@ -45,18 +45,17 @@ class Login extends Component {
     const { selectedState, country } = this.props
     return(
       <main className="loginPage">
-
         <header className="headerContainer">
           <h1 className="titleLogin">Welcome to your global weather finder</h1>
           <p className="titleLogin">Set the country, state and city where you want to see the weather in the desired location</p>
           <svg className="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#8e54f194" fill-opacity="1" d="M0,32L26.7,58.7C53.3,85,107,139,160,170.7C213.3,203,267,213,320,186.7C373.3,160,427,96,480,112C533.3,128,587,224,640,240C693.3,256,747,192,800,138.7C853.3,85,907,43,960,21.3C1013.3,0,1067,0,1120,26.7C1173.3,53,1227,107,1280,133.3C1333.3,160,1387,160,1413,160L1440,160L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z">
+            <path fill="#8e54f194" fillOpacity="1" d="M0,128L21.8,122.7C43.6,117,87,107,131,138.7C174.5,171,218,245,262,250.7C305.5,256,349,192,393,149.3C436.4,107,480,85,524,112C567.3,139,611,213,655,240C698.2,267,742,245,785,213.3C829.1,181,873,139,916,106.7C960,75,1004,53,1047,53.3C1090.9,53,1135,75,1178,106.7C1221.8,139,1265,181,1309,176C1352.7,171,1396,117,1418,90.7L1440,64L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z">
           </path>
           </svg>
         </header>
-
         <section className="loginSection">
           <form className="searchContainer">
+            <span>Type your country acronym</span>
             <input
               type="text"
               name="name"
@@ -70,16 +69,16 @@ class Login extends Component {
             className="submitCountry"
             onClick={ this.handleCountry }
             >
-              Type your country acronym
+              Send
             </button>
             { states && <SelectState /> }
             { selectedState.length > 0 && country !== undefined
               ? <SelectCity />
-              : console.log("não foi")
+              : <span className="advisor"> Select the State </span>
             }
           </form>
         </section>
-        <ShowSearch />
+          { country && <ShowSearch /> }
       </main>
     )
   }

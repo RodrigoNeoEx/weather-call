@@ -8,9 +8,13 @@ class ShowSearch extends Component {
   render() {
     const { country, selectedState, selectedCity } = this.props
     return(
-    <section>
-      <span className="searchResult">{ `Country: ${country.iso2}, State: ${selectedState}, City: ${selectedCity}` }</span>
-      <button className="submitSearch" type="button">See climate on this location</button>
+    <section className="showResult">
+      <span className="searchResult">
+        {`Country: ${country.iso2}`} <br/>
+        {`State: ${selectedState}`} <br/>
+        {`City: ${selectedCity}` }
+      </span>
+      <button className="submitSearch" type="button">See the weather at this location</button>
     </section>)
   }
 }
