@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { requestWeatherAPI } from '../redux/actions';
 
 class ShowSearch extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.requestWeather = this.requestWeather.bind(this)
+  }
+
+  requestWeather() {
+    const { getWeather, selectedCity, country } = this.props;
+    getWeather(selectedCity, country);
+  }
+
   render() {
     const { country, selectedState, selectedCity } = this.props
     return(
@@ -17,7 +25,7 @@ class ShowSearch extends Component {
       <button
         className="submitSearch"
         type="button"
-        // onClick={}
+        onClick={this.requestWeather}
       >
         See the weather at this location
       </button>
@@ -31,4 +39,8 @@ const mapStateToProps = (state) => ({
   selectedState: state.selectedState.stateSelected,
 });
 
-export default connect(mapStateToProps)(ShowSearch);
+const mapDispatchToProps = (dispatch) => ({
+  getWeather: (selectedCity, country) => dispatch(requestWeatherAPI(selectedCity, country)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowSearch);
