@@ -49,10 +49,10 @@ export const requestCityAPI = (countryName, stateName) => async (dispatch) => {
   }}
 };
 
-export const requestWeatherAPI = (selectedCity) => async (dispatch) => {
+export const requestWeatherAPI = (selectedCity, selectedCountry) => async (dispatch) => {
     dispatch(requestWeather());
   try {
-    const response = await fetchWeatherAPI(selectedCity);
+    const response = await fetchWeatherAPI(selectedCity, selectedCountry);
     return dispatch(requestWeather(response));
   } catch (error) {
     return console.log(error);

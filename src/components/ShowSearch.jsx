@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestWeatherAPI } from '../redux/actions';
+import { Link } from 'react-router-dom';
 
 class ShowSearch extends Component {
   constructor(props) {
@@ -8,9 +9,10 @@ class ShowSearch extends Component {
     this.requestWeather = this.requestWeather.bind(this)
   }
 
-  requestWeather() {
+  async requestWeather() {
     const { getWeather, selectedCity, country } = this.props;
-    getWeather(selectedCity, country);
+    await getWeather(selectedCity, country.iso2);
+
   }
 
   render() {
@@ -22,13 +24,20 @@ class ShowSearch extends Component {
         {`State: ${selectedState}`} <br/>
         {`City: ${selectedCity}` }
       </span>
-      <button
-        className="submitSearch"
-        type="button"
-        onClick={this.requestWeather}
-      >
-        See the weather at this location
-      </button>
+      { typeof(selectedCity) ===  "string" && selectedCity.length > 0
+        ? (
+          <Link to="/Weather">
+            <button
+              className="submitSearch"
+              type="button"
+              onClick={this.requestWeather}
+            >
+              See the weather at this location
+            </button>
+          </Link>
+          )
+      : <span className="submitSearch">Choose Country, State and City before search</span>
+      }
     </section>)
   }
 }
@@ -37,6 +46,7 @@ const mapStateToProps = (state) => ({
   country: state.country.country,
   selectedCity: state.selectedCity.citySelected,
   selectedState: state.selectedState.stateSelected,
+  weather: state.weather.weather,
 });
 
 const mapDispatchToProps = (dispatch) => ({

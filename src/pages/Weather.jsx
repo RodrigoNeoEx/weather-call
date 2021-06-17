@@ -12,9 +12,9 @@ class Weather extends Component {
   }
   render() {
     return (
-      <div>
+      <section>
         <p>{this.teste()}</p>
-      </div>
+      </section>
     )
   }
 }
