@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { requestWeatherAPI } from '../redux/actions';
+// import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 class ShowSearch extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.requestWeather = this.requestWeather.bind(this)
+  }
+
+  async requestWeather() {
+    document.querySelector('.svg1').classList.add('loadingON');
+    const { getWeather, selectedCity, country,  } = this.props;
+    await getWeather(selectedCity, country.iso2);
+  }
+
   render() {
-    const { country, selectedState, selectedCity } = this.props
+    const { country, selectedState, selectedCity, history } = this.props;
+    const timer = 1900;
     return(
     <section className="showResult">
       <span className="searchResult">
@@ -14,7 +26,23 @@ class ShowSearch extends Component {
         {`State: ${selectedState}`} <br/>
         {`City: ${selectedCity}` }
       </span>
-      <button className="submitSearch" type="button">See the weather at this location</button>
+      { typeof(selectedCity) ===  "string" && selectedCity.length > 0
+        ? (
+            <button
+              className="submitSearch"
+              type="button"
+              onClick={ () => {
+                this.requestWeather();
+                setTimeout(() => history.push('/Weather'), timer);
+              }
+            }
+            >
+              See the weather at this location
+            </button>
+
+          )
+      : <span className="submitSearch">Choose Country, State and City before search</span>
+      }
     </section>)
   }
 }
@@ -23,6 +51,11 @@ const mapStateToProps = (state) => ({
   country: state.country.country,
   selectedCity: state.selectedCity.citySelected,
   selectedState: state.selectedState.stateSelected,
+  weather: state.weather.weather,
 });
 
-export default connect(mapStateToProps)(ShowSearch);
+const mapDispatchToProps = (dispatch) => ({
+  getWeather: (selectedCity, country) => dispatch(requestWeatherAPI(selectedCity, country)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ShowSearch));

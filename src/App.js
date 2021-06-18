@@ -1,12 +1,15 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
-// import Main from './pages/Main'
-
+import Weather from './pages/Weather';
 
 function App() {
   return (
     <div className="App">
-      <Login />
-      {/* <Main /> */}
+      <Switch>
+        <Route exact path="/" component={ Login } />
+        <Route path="/Weather" component={ Weather } />
+      </Switch>
     </div>
   );
 }
