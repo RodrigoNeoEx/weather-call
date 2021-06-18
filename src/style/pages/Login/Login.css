@@ -21,6 +21,10 @@
   display: flex;
   align-self: center;
 }
+.loginPage .headerContainer .loadingON {
+  -webkit-animation: loading 2s linear;
+          animation: loading 2s linear;
+}
 .loginPage .headerContainer .titleLogin {
   z-index: 1;
   text-align: center;
@@ -103,6 +107,23 @@
   line-height: 4vh;
 }
 
+@-webkit-keyframes loading {
+  from {
+    height: 14vh;
+  }
+  to {
+    height: 200vh;
+  }
+}
+
+@keyframes loading {
+  from {
+    height: 14vh;
+  }
+  to {
+    height: 200vh;
+  }
+}
 @media (min-width: 600px) {
   .loginPage {
     margin: 0 auto;
@@ -110,5 +131,9 @@
   .loginPage .loginSection {
     left: -45.5%;
     top: -10%;
+  }
+  .loginPage .loadingON {
+    -webkit-animation: loading 1.9s linear;
+            animation: loading 1.9s linear;
   }
 }/*# sourceMappingURL=Login.css.map */
