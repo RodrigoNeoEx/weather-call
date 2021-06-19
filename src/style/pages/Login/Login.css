@@ -1,4 +1,4 @@
-.loginPage {
+.content {
   height: 100vh;
   background: linear-gradient(180deg, rgba(33, 171, 235, 0.69) 50%, rgba(136, 69, 252, 0.5102415966) 100%);
   overflow: hidden;
@@ -8,11 +8,11 @@
   align-items: center;
   justify-content: space-between;
 }
-.loginPage .headerContainer {
+.content .headerContainer {
   display: flex;
   flex-direction: column;
 }
-.loginPage .headerContainer .svg1 {
+.content .headerContainer .svg1 {
   position: absolute;
   z-index: 0;
   background-color: rgba(100, 219, 126, 0.075);
@@ -21,20 +21,20 @@
   display: flex;
   align-self: center;
 }
-.loginPage .headerContainer .loadingON {
+.content .headerContainer .loadingON {
   -webkit-animation: loading 2s linear;
           animation: loading 2s linear;
 }
-.loginPage .headerContainer .titleLogin {
+.content .headerContainer .title {
   z-index: 1;
   text-align: center;
   margin: 0 0 1vh 0;
 }
-.loginPage .headerContainer p {
+.content .headerContainer p {
   font-size: 3vh;
   margin-top: 0;
 }
-.loginPage .loginSection {
+.content .loginSection {
   box-shadow: #00000045 0px 10px 15px 9px, #000000 0px 5px 10px 5px;
   margin: 1.4vh;
   display: flex;
@@ -53,13 +53,13 @@
   left: -47.5%;
   top: -8%;
 }
-.loginPage .loginSection .searchContainer {
+.content .loginSection .searchContainer {
   display: grid;
   grid-template-columns: 10vw 70vw 10vw;
   grid-template-rows: 10vh 10vh 10vh 10vh;
   height: 40vh;
 }
-.loginPage .loginSection .searchContainer select, .loginPage .loginSection .searchContainer span, .loginPage .loginSection .searchContainer button, .loginPage .loginSection .searchContainer input {
+.content .loginSection .searchContainer select, .content .loginSection .searchContainer span, .content .loginSection .searchContainer button, .content .loginSection .searchContainer input {
   box-shadow: #00000045 0px 3px 6px 6px, #000000 0px 2px 3px 1px;
   grid-column: 2;
   height: 8vh;
@@ -72,7 +72,7 @@
           backdrop-filter: blur(5px);
   font-size: 3vh;
 }
-.loginPage .loginSection .searchContainer .submitCountry {
+.content .loginSection .searchContainer .submitCountry {
   grid-column: 3;
   grid-row: 2;
   width: 10vh;
@@ -80,11 +80,11 @@
   position: relative;
   background-color: #ffffffb4;
 }
-.loginPage .showResult {
+.content .showResult {
   display: flex;
   align-items: center;
 }
-.loginPage .showResult .searchResult {
+.content .showResult .searchResult {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +92,7 @@
   font-size: 3vh;
   font-weight: 600;
 }
-.loginPage .showResult .submitSearch {
+.content .showResult .submitSearch {
   margin-right: 1vh;
   background-color: #7e3cf78f;
   border-radius: 5vh;

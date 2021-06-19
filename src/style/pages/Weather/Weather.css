@@ -1,0 +1,34 @@
+.weatherInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 65vh;
+  background-color: rgba(207, 207, 250, 0.171);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  border-radius: 3vh;
+  box-shadow: 0px 0px 5px 1px black, 0px 5px 10px 2px #484848b5;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 1vh;
+}
+.weatherInfo .weatherBox {
+  display: grid;
+  grid-template-rows: 20vh auto;
+  font-size: 3.5vh;
+  font-weight: 600;
+}
+.weatherInfo .weatherBox img {
+  width: 30vw;
+  align-self: flex-start;
+  justify-self: center;
+  border-radius: 2vh;
+  box-shadow: 0px 0px 5px 1px black, 0px 5px 10px 2px #484848b5;
+}
+.weatherInfo .weatherBox p {
+  line-height: 1vh;
+}/*# sourceMappingURL=Weather.css.map */

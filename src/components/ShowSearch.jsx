@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestWeatherAPI } from '../redux/actions';
-// import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 class ShowSearch extends Component {
@@ -12,7 +11,7 @@ class ShowSearch extends Component {
 
   async requestWeather() {
     document.querySelector('.svg1').classList.add('loadingON');
-    const { getWeather, selectedCity, country,  } = this.props;
+    const { getWeather, selectedCity, country } = this.props;
     await getWeather(selectedCity, country.iso2);
   }
 
@@ -21,11 +20,11 @@ class ShowSearch extends Component {
     const timer = 1900;
     return(
     <section className="showResult">
-      <span className="searchResult">
+      <p className="searchResult">
         {`Country: ${country.iso2}`} <br/>
         {`State: ${selectedState}`} <br/>
         {`City: ${selectedCity}` }
-      </span>
+      </p>
       { typeof(selectedCity) ===  "string" && selectedCity.length > 0
         ? (
             <button
