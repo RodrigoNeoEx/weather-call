@@ -1,3 +1,13 @@
+.goBack {
+  height: 5vh;
+  border-top-left-radius: 2vh;
+  border-top-right-radius: 2vh;
+  background-color: transparent;
+  box-shadow: 0px -1px 3px 1px black;
+  font-size: 3.5vh;
+  font-weight: 600;
+}
+
 .weatherInfo {
   position: absolute;
   top: 50%;
@@ -19,7 +29,7 @@
 .weatherInfo .weatherBox {
   display: grid;
   grid-template-rows: 20vh auto;
-  font-size: 3.5vh;
+  font-size: 3.2vh;
   font-weight: 600;
 }
 .weatherInfo .weatherBox img {
