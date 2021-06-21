@@ -1,4 +1,4 @@
-.loginPage {
+.content {
   height: 100vh;
   background: linear-gradient(180deg, rgba(33, 171, 235, 0.69) 50%, rgba(136, 69, 252, 0.5102415966) 100%);
   overflow: hidden;
@@ -21,7 +21,7 @@
     .loadingON {
       animation: loading 2s linear;
     }
-    .titleLogin {
+    .title {
       z-index: 1;
       text-align: center;
       margin: 0 0 1vh 0;
