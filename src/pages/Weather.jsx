@@ -17,17 +17,17 @@ const Weather = ({ weather, selectedState }) => {
     <div>
       { [weather].map((wInfo) => {
         if(wInfo.weather[0].description.includes('clouds')) img = cloudy;
-        if(wInfo.weather[0].description.includes('Clear')) img = sun;
-        if(wInfo.weather[0].description.includes('Rain')) img = rain;
-        if(wInfo.weather[0].description.includes('Thunderstorm')) img = storm;
+        if(wInfo.weather[0].description.includes('clear')) img = sun;
+        if(wInfo.weather[0].description.includes('rain')) img = rain;
+        if(wInfo.weather[0].description.includes('thunderstorm')) img = storm;
         let myDate = new Date( wInfo.dt *1000);
       return (
       <content className="content" key={wInfo.cod}>
         <header className="headerContainer">
-          <h1 className="title">
+          <h1 className="title w600Country">
             {`Country: ${wInfo.sys.country} - State: ${selectedState}`}
           </h1>
-          <h1 className="title">{`City: ${wInfo.name}`}</h1>
+          <h1 className="title w600City">{`City: ${wInfo.name}`}</h1>
           <h3 className="title">{`${myDate.toLocaleString()} `}<UTCconverter timezone={wInfo.timezone} /> </h3>
 
             <svg className="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
