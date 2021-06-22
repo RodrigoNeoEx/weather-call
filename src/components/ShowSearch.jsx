@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 class ShowSearch extends Component {
   constructor(props) {
     super(props);
-    this.requestWeather = this.requestWeather.bind(this)
+    this.requestWeather = this.requestWeather.bind(this);
   }
 
   async requestWeather() {
@@ -18,8 +18,9 @@ class ShowSearch extends Component {
   render() {
     const { country, selectedState, selectedCity, history } = this.props;
     const timer = 1900;
-    return(
+    return (
     <section className="showResult">
+
       <p className="searchResult">
         {`Country: ${country.iso2}`} <br/>
         {`State: ${selectedState}`} <br/>
@@ -32,19 +33,17 @@ class ShowSearch extends Component {
               type="button"
               onClick={ () => {
                 this.requestWeather();
-                setTimeout(() => history.push('/Weather'), timer);
+                setTimeout(() => history.push('/Weather'), timer); }
               }
-            }
             >
               See the weather at this location
             </button>
-
           )
-      : <span className="submitSearch">Choose Country, State and City before search</span>
+        : <span className="submitSearch">Choose Country, State and City before search</span>
       }
     </section>)
   }
-}
+};
 
 const mapStateToProps = (state) => ({
   country: state.country.country,
