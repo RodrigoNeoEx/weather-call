@@ -24,6 +24,7 @@
 .content .headerContainer .loadingON {
   -webkit-animation: loading 2s linear;
           animation: loading 2s linear;
+  z-index: 5;
 }
 .content .headerContainer .title {
   z-index: 1;
@@ -125,15 +126,29 @@
   }
 }
 @media (min-width: 600px) {
-  .loginPage {
+  .content {
     margin: 0 auto;
   }
-  .loginPage .loginSection {
+  .content .headerContainer .title {
+    margin: 0;
+  }
+  .content .headerContainer p.title {
+    font-size: 5vh;
+  }
+  .content .loginSection {
     left: -45.5%;
     top: -10%;
   }
-  .loginPage .loadingON {
+  .content .loadingON {
     -webkit-animation: loading 1.9s linear;
             animation: loading 1.9s linear;
+  }
+  .content .showResult .searchResult {
+    font-size: 4vh;
+  }
+  .content .showResult .submitSearch {
+    font-size: 3vh;
+    line-height: 8vh;
+    padding: 0 3vh;
   }
 }/*# sourceMappingURL=Login.css.map */

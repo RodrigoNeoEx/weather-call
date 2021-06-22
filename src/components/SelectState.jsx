@@ -13,7 +13,7 @@ class SelectState extends Component {
 
   componentDidUpdate() {
     const { selectedState } = this.state;
-    const { getSelectedState } = this.props
+    const { getSelectedState } = this.props;
     getSelectedState(selectedState);
   }
 
@@ -28,7 +28,7 @@ class SelectState extends Component {
       <select value={ selectedState } onChange={this.handleChange}>
         { states ? states.map((stateName) => (
           <option
-            value={stateName.iso2}
+            value={ stateName.iso2 }
             key={ stateName.name }
           >
             { `${stateName.name} - ${stateName.iso2}` }
@@ -38,7 +38,7 @@ class SelectState extends Component {
       </select>
     )
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   getSelectedState: (input) => dispatch(setSelectedState(input)),

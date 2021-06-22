@@ -20,6 +20,7 @@
     }
     .loadingON {
       animation: loading 2s linear;
+      z-index: 5;
     }
     .title {
       z-index: 1;
@@ -110,14 +111,32 @@
 }
 
 @media (min-width: 600px) {
-  .loginPage {
+  .content {
     margin: 0 auto;
+    .headerContainer {
+      .title {
+        margin: 0;
+      }
+      p.title {
+        font-size: 5vh;
+      }
+    }
     .loginSection {
       left: -45.5%;
       top: -10%;
     }
     .loadingON {
       animation: loading 1.9s linear;
+    }
+    .showResult {
+      .searchResult {
+        font-size: 4vh;
+      }
+      .submitSearch {
+        font-size: 3vh;
+        line-height: 8vh;
+        padding: 0 3vh;
+      }
     }
   }
 }

@@ -11,7 +11,6 @@ const headersWeather = new Headers();
 headersWeather.append("x-rapidapi-key", `72471c1f29msh58117e816879b7fp14c013jsn2baf844692df`);
 headersWeather.append("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com");
 
-
 const requestWeatherOptions = {
   method: 'GET',
   headers: headersWeather,

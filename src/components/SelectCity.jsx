@@ -14,12 +14,12 @@ class SelectCity extends Component {
 
   componentDidMount() {
     const {country, selectedState, getCitys} = this.props;
-    getCitys(country.iso2, selectedState)
+    getCitys(country.iso2, selectedState);
   }
 
   componentDidUpdate() {
     const { selectedCity } = this.state;
-    const { getSelectedCity } = this.props
+    const { getSelectedCity } = this.props;
     getSelectedCity(selectedCity);
   }
 
@@ -33,13 +33,13 @@ class SelectCity extends Component {
     city.map((cityName, index) => {
       return (
       <option
-        value={cityName.name}
+        value={ cityName.name }
         key={ index }
       >
         { cityName.name }
       </option>);
     })
-  }
+  };
 
   render() {
     const { city } = this.props;
@@ -47,16 +47,18 @@ class SelectCity extends Component {
     return(
       <>
       <select value={ selectedCity } onChange={this.handleChange}>
-        { city ? city.map((cityName, index) => {
-          return (
-          <option
-            value={cityName.name}
-            key={ index }
-          >
-            { cityName.name }
-          </option>);
-        })
-          : <option>loading...</option> }
+        { city
+          ? city.map((cityName, index) => {
+            return (
+            <option
+              value={ cityName.name }
+              key={ index }
+            >
+              { cityName.name }
+            </option>);
+            })
+          : <option>loading...</option>
+        }
       </select>
       </>
     )
