@@ -20,6 +20,7 @@
     }
     .loadingON {
       animation: loading 2s linear;
+      z-index: 5;
     }
     .title {
       z-index: 1;

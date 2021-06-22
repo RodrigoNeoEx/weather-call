@@ -43,7 +43,7 @@
   line-height: 1vh;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 550px) {
   .goBack {
     height: 8vh;
     font-size: 6vh;

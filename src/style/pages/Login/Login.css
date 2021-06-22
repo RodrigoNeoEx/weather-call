@@ -24,6 +24,7 @@
 .content .headerContainer .loadingON {
   -webkit-animation: loading 2s linear;
           animation: loading 2s linear;
+  z-index: 5;
 }
 .content .headerContainer .title {
   z-index: 1;

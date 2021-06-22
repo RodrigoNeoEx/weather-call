@@ -11,8 +11,9 @@ import '../style/pages/Weather/Weather.css';
 import '../style/pages/Login/Login.css';
 
 const Weather = ({ weather, selectedState }) => {
-  const history = useHistory()
-  let img = ''
+  const history = useHistory();
+  let img = '';
+  const timer = 1800;
   return (
     <div>
       { [weather].map((wInfo) => {
@@ -49,7 +50,9 @@ const Weather = ({ weather, selectedState }) => {
         <button
           className="goBack"
           type="button"
-          onClick={ () => history.push('/')}
+          onClick={ () => {
+            document.querySelector('.svg1').classList.add('loadingON');
+            setTimeout(() => history.push('/'), timer)}}
           >
             New Search
             <TiArrowBack />
